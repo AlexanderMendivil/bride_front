@@ -2,26 +2,26 @@
     <div class="container">
 
         <div class="subcontainer">
-            <p>{{ days }}</p>
-            <p>Días</p>
+            <p class="text">{{ days }}</p>
+            <p class="text">Días</p>
 
         </div>
 
         <div class="subcontainer">
-            <p>{{ hours }}</p>
-            <p>Horas</p>
+            <p class="text">{{ hours }}</p>
+            <p class="text">Horas</p>
 
         </div>
 
         <div class="subcontainer">
-            <p>{{ minutes }}</p>
-            <p>Minutos</p>
+            <p class="text">{{ minutes }}</p>
+            <p class="text">Minutos</p>
 
         </div>
 
         <div class="subcontainer">
-            <p>{{ seconds }}</p>
-            <p>Segundos</p>
+            <p class="text">{{ seconds }}</p>
+            <p class="text">Segundos</p>
 
         </div>
     </div>    
@@ -84,4 +84,8 @@ export default {
         align-items: center;
         margin: 0.5em;
     }
+    .text{
+    color: rgb(247, 231, 195);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
 </style>
