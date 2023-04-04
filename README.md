@@ -1,4 +1,4 @@
-# AndreyJose
+# AndreayJose
 
 ## Build Setup
 
