@@ -1,20 +1,24 @@
 <template>
-  <div :class="background">
-    
-    <div class="center">
-      <h1 class="text">Save the date!</h1>
-      <h3 class="text">16 de febrero de 2024</h3>
-    </div>
+  <client-only>
 
-    <div>
-      <CounterDays/>
+    <div :class="background">
+      
+      <div class="center">
+        <h1 class="text">Save the date!</h1>
+        <h3 class="text">16 de febrero de 2024</h3>
+      </div>
+      
+      <div>
+        <CounterDays/>
+      </div>
+      
     </div>
-
-  </div>
+  </client-only>
 </template>
 
 <script>
 import { defineAsyncComponent } from 'vue'
+import { preloadImages } from '@/utils/preloadImages'
 export default {
   name: 'IndexPage',
   components:{
@@ -22,7 +26,8 @@ export default {
   },
   data(){
     return{
-      background: 'background-image2 flex'  
+      background: 'background-image2 flex',
+      imagesLoaded: false,  
     }
   },
   methods:{
@@ -62,9 +67,33 @@ export default {
       }, 5000);
     }
   },
-  mounted(){
-    this.randomBackground();
-  }
+  preload(){
+    const images = [
+        '@/static/images/marr.jpg',
+        '@/static/images/picture2.jpeg',
+        '@/static/images/picture3.jpeg',
+        '@/static/images/picture4.jpeg',
+        '@/static/images/picture5.jpeg',
+        '@/static/images/picture7.jpeg',
+        '@/static/images/picture9.jpeg',
+        '@/static/images/picture10.jpeg',
+        '@/static/images/picture11.jpeg',
+        '@/static/images/picture12.jpeg',
+        '@/static/images/picture13.jpeg',
+        '@/static/images/picture14.jpeg',
+        '@/static/images/picture15.jpeg',
+      ]
+
+      images.forEach((image) => {
+      const img = new Image()
+      img.src = image
+    })
+      // preloadImages(images)
+  },
+    mounted(){
+      this.imagesLoaded = true
+    this.randomBackground()
+  },
 }
 </script>
 
@@ -80,7 +109,7 @@ html {
     font-family: "Pacific";
 }
   .background-image{
-      background-image: url('@/assets/images/marr.jpg');
+      background-image: url('~/static/images/marr.jpg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -89,7 +118,7 @@ html {
   } 
   
   .background-image2{
-      background-image: url('@/assets/images/picture2.jpeg');
+      background-image: url('~/static/images/picture2.jpeg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -97,7 +126,7 @@ html {
       background-size: cover;
   } 
   .background-image3{
-      background-image: url('@/assets/images/picture3.jpeg');
+      background-image: url('~/static/images/picture3.jpeg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -105,7 +134,7 @@ html {
       background-size: cover;
   } 
   .background-image4{
-      background-image: url('@/assets/images/picture4.jpeg');
+      background-image: url('~/static/images/picture4.jpeg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -114,7 +143,7 @@ html {
   }
 
   .background-image5{
-      background-image: url('@/assets/images/picture5.jpeg');
+      background-image: url('~/static/images/picture5.jpeg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -123,7 +152,7 @@ html {
   } 
 
   .background-image7{
-      background-image: url('@/assets/images/picture7.jpeg');
+      background-image: url('~/static/images/picture7.jpeg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -132,7 +161,7 @@ html {
   }
 
   .background-image9{
-      background-image: url('@/assets/images/picture9.jpeg');
+      background-image: url('~/static/images/picture9.jpeg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -140,7 +169,7 @@ html {
       background-size: cover;
   } 
   .background-image10{
-      background-image: url('@/assets/images/picture10.jpeg');
+      background-image: url('~/static/images/picture10.jpeg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -148,7 +177,7 @@ html {
       background-size: cover;
   } 
   .background-image11{
-      background-image: url('@/assets/images/picture11.jpeg');
+      background-image: url('~/static/images/picture11.jpeg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -156,7 +185,7 @@ html {
       background-size: cover;
   } 
   .background-image12{
-      background-image: url('@/assets/images/picture12.jpeg');
+      background-image: url('~/static/images/picture12.jpeg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -164,7 +193,7 @@ html {
       background-size: cover;
   } 
   .background-image13{
-      background-image: url('@/assets/images/picture13.jpeg');
+      background-image: url('~/static/images/picture13.jpeg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -173,7 +202,7 @@ html {
   } 
   
   .background-image14{
-      background-image: url('@/assets/images/picture14.jpeg');
+      background-image: url('~/static/images/picture14.jpeg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -181,7 +210,7 @@ html {
       background-size: cover;
   } 
   .background-image15{
-      background-image: url('@/assets/images/picture15.jpeg');
+      background-image: url('~/static/images/picture15.jpeg');
       height: 100vh;
       width: 100%;
       background-position: center;
@@ -209,5 +238,6 @@ html {
   .text{
     color: rgb(247, 231, 195);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: black 0.1em 0.1em 0.2em;
   }
 </style>
